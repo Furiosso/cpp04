@@ -8,7 +8,6 @@ Animal::Animal(void) : type("")
 Animal::Animal(const Animal& src)
 {
 	*this = src;
-	this->type = "";
 	std::cout << "An animal has been copied" << std::endl;
 }
 
