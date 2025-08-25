@@ -6,10 +6,9 @@ Cat::Cat(void) : Animal()
 	std::cout << "A cat has been created" << std::endl;
 }
 
-Cat::Cat(const Cat& src) : Animal()
+Cat::Cat(const Cat& src) : Animal(src)
 {
 	std::cout << "A cat has been copied" << std::endl;
-	*this = src;
 }
 
 Cat& Cat::operator=(const Cat& rhs)
