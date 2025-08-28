@@ -2,10 +2,7 @@
 
 Cure::Cure(void) : AMateria("cure") {}
 
-Cure::Cure(const Cure& src) : AMateria("cure")
-{
-	*this = src;
-}
+Cure::Cure(const Cure& src) : AMateria(src) { *this = src; }
 
 Cure& Cure::operator=(const Cure& rhs)
 {

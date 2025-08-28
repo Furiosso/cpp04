@@ -38,27 +38,48 @@ int main()
     }
 
     // Test 2: Array de Animal con mitad Dog y mitad Cat
-    std::cout << "\n=== Test 2: Array de Animal ===\n";
+    std::cout << "\n=== Test 2: Crear arreglo de animales como se indica en el enunciado ===\n";
+    const int ARRAY_SIZE = 4; // Tamaño pequeño para simplicidad
+    Animal* animals[ARRAY_SIZE];
+
+    // Llenar la primera mitad con Dogs
+    for (int i = 0; i < ARRAY_SIZE / 2; ++i)
     {
-        const int size = 6; // Tamaño par para dividir entre Dog y Cat
-        Animal* animals[size];
+        animals[i] = new Dog();
+    }
 
-        // Llenar el array: mitad Dog, mitad Cat
-        for (int i = 0; i < size / 2; ++i)
-            animals[i] = new Dog();
-        for (int i = size / 2; i < size; ++i)
-            animals[i] = new Cat();
+    // Llenar la segunda mitad con Cats
+    for (int i = ARRAY_SIZE / 2; i < ARRAY_SIZE; ++i)
+    {
+        animals[i] = new Cat();
+    }
 
-        // Verificar tipos y sonidos
-        for (int i = 0; i < size; ++i)
+    // Mostrar las ideas de los cerebros y sonidos de los animales
+    std::cout << "\nMostrando ideas y sonidos de los animales:\n";
+    for (int i = 0; i < ARRAY_SIZE; ++i)
+    {
+        std::cout << "Animal " << i << " (" << animals[i]->getType() << "): ";
+        animals[i]->makeSound();
+        // Acceder al cerebro según el tipo de animal
+        if (animals[i]->getType() == "Dog")
         {
-            std::cout << "Animal " << i << " type: " << animals[i]->getType() << std::endl;
-            animals[i]->makeSound();
+            Dog* dog = dynamic_cast<Dog*>(animals[i]);
+            if (dog)
+                std::cout << "Idea en el cerebro: " << dog->getBrain()->getIdea(0) << std::endl;
         }
+        else if (animals[i]->getType() == "Cat")
+        {
+            Cat* cat = dynamic_cast<Cat*>(animals[i]);
+            if (cat)
+                std::cout << "Idea en el cerebro: " << cat->getBrain()->getIdea(0) << std::endl;
+        }
+    }
 
-        // Eliminar todos los animales
-        for (int i = 0; i < size; ++i)
-            delete animals[i]; // Debe llamar a los destructores correctos
+    // Eliminar todos los animales
+    std::cout << "\nEliminando animales:\n";
+    for (int i = 0; i < ARRAY_SIZE; ++i)
+    {
+        delete animals[i];
     }
 
     // Test 3: Prueba de copia profunda para Dog

@@ -110,7 +110,6 @@ int main() {
         Dog dogObj;
         Animal sliced = dogObj;  // Copia por valor: slicing
 
-        std::cout << "Tipo sliced: " << sliced.getType() << std::endl;  // Debe ser "Animal" o vacío (pérdida de "Dog")
         sliced.makeSound();  // Debe ejecutar sonido de Animal (no de Dog)
     }
 
