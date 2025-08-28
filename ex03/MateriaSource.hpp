@@ -1,20 +1,20 @@
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-# include <string>
-# include <iostream>
+# include "IMateriaSource.hpp"
 
-class	MateriaSource
+class	MateriaSource : public IMateriaSource
 {
 	private:
+		AMateria*	_materia[4];
 	protected:
 	public:
 		MateriaSource(void);
 		MateriaSource(const MateriaSource& src);
 		MateriaSource& operator=(const MateriaSource& rhs);
 		~MateriaSource(void);
+		void		learnMateria(AMateria*);
+		AMateria*	createMateria(const std::string& type);
 };
-
-std::ostream&	operator<<(std::ostream& o, MateriaSource const& value);
 
 #endif

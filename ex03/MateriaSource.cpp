@@ -1,22 +1,51 @@
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) {}
+MateriaSource::MateriaSource(void) 
+{
+	for (int i = 0; i < 4; i++)
+		_materia[i] = NULL;
+}
 
 MateriaSource::MateriaSource(const MateriaSource& src)
 {
-	*this = src;
+	for (int i = 0; i < 4; i++)
+		this->_materia[i] = src._materia[i]->clone();
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& rhs)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		delete this->_materia[i];
+		this->_materia[i] = rhs._materia[i]->clone();
+	}
 	return *this;
 }
 
-MateriaSource::~MateriaSource(void) {}
-
-std::ostream&	operator<<(std::ostream& o, MateriaSource const& value)
+MateriaSource::~MateriaSource(void)
 {
-	o << value;
-	return o;
+	for (int i = 0; i < 4; i++)
+		delete this->_materia[i];
 }
 
+void	MateriaSource::learnMateria(AMateria* materia)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_materia[i] == NULL)
+		{
+			this->_materia[i] = materia;
+			break ;
+		}
+	}
+}
+
+AMateria*	MateriaSource::createMateria(const std::string& type)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_materia[i] && this->_materia[i]->getType() == type)
+			return	this->_materia[i]->clone();
+	}
+	return NULL;
+}

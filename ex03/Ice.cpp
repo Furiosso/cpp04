@@ -2,13 +2,11 @@
 
 Ice::Ice(void) : AMateria("ice") {}
 
-Ice::Ice(const Ice& src) : AMateria(src)
-{
-	*this = src;
-}
+Ice::Ice(const Ice& src) : AMateria(src) {}
 
 Ice& Ice::operator=(const Ice& rhs)
 {
+	this->_type = rhs.getType();
 	return *this;
 }
 

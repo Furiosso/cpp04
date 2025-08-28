@@ -2,7 +2,7 @@
 
 std::ostream&	operator<<(std::ostream& o, ICharacter const& value)
 {
-	o << value;
+	o << value.getName();
 	return o;
 }
 

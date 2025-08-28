@@ -3,7 +3,7 @@
 
 # include "AMateria.hpp"
 
-class	Cure
+class	Cure : public AMateria
 {
 	private:
 	protected:

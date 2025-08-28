@@ -9,8 +9,8 @@ CFILES = main.cpp\
 		 Ice.cpp\
 		 Cure.cpp\
 		 ICharacter.cpp\
-		 IMateriaSource.cpp\
-		 Character.cpp
+		 Character.cpp\
+		 MateriaSource.cpp
 
 ODIR = build
 
